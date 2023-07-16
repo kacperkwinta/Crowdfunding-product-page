@@ -11,3 +11,7 @@ mobileMenu.addEventListener("click", function () {
 	openMenuIcon.classList.toggle("hidden");
 	closeMenuIcon.classList.toggle("hidden");
 });
+
+const dialog = document.querySelector("dialog");
+
+dialog.showModal();
