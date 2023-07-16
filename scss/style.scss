@@ -104,7 +104,7 @@ body {
 /// HEADER
 ///////////////////////////////
 header {
-	height: 65vh;
+	height: 50vh;
 	background: url(../images/image-hero-desktop.jpg) no-repeat no-repeat center;
 	background-size: cover;
 
@@ -216,6 +216,10 @@ main {
 	margin: 0 auto;
 	background-color: $clr-neutral-3;
 
+	&:not(:first-of-type) {
+		margin-top: 3.2rem;
+	}
+
 	@include respond(tab-port) {
 		width: 90%;
 	}
@@ -252,6 +256,9 @@ main {
 			}
 		}
 	}
+}
+
+.section-money {
 }
 
 ///////////////////////////////
@@ -319,7 +326,7 @@ main {
 	gap: 3.2rem;
 
 	span {
-		padding-right: 2.4rem;
+		padding-right: 3.2rem;
 	}
 
 	&:hover {

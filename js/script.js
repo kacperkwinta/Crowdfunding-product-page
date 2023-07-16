@@ -1,6 +1,7 @@
 "use strict";
-
+//////////////////////////////////////////////////////////////////////
 // For menu
+//////////////////////////////////////////////////////////////////////
 const navLinks = document.querySelector(".wrapper-nav");
 const mobileMenu = document.querySelector(".mobile-menu");
 const openMenuIcon = mobileMenu.querySelector(".icon-menu");
@@ -41,3 +42,19 @@ function hideMenu() {
 	closeMenuIcon.classList.add("hidden");
 	overlay.classList.add("hidden");
 }
+
+//////////////////////////////////////////////////////////////////////
+// For sections
+//////////////////////////////////////////////////////////////////////
+const bookmark = document.querySelector(".bookmark");
+
+bookmark.addEventListener("click", function () {
+	bookmark.classList.toggle("bookmark--active");
+	const bookmarkText = bookmark.querySelector(".bookmark-text");
+
+	if (bookmark.classList.contains("bookmark--active")) {
+		bookmarkText.textContent = "Bookmarked";
+	} else {
+		bookmarkText.textContent = "Bookmark";
+	}
+});
