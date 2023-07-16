@@ -92,6 +92,7 @@ $clr-neutral-4: hsl(0, 0%, 89%);
 html {
 	font-size: 62.5%;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -108,6 +109,7 @@ header {
 	background-size: cover;
 
 	@include respond(phone) {
+		height: 50vh;
 		background: url(../images/image-hero-mobile.jpg) no-repeat no-repeat center;
 	}
 }
@@ -122,6 +124,7 @@ nav {
 	.wrapper {
 		@include flex(center, center);
 		gap: 2.4rem;
+		z-index: 1000;
 	}
 
 	a {
@@ -133,8 +136,20 @@ nav {
 ///////////////////////////////
 /// MOBILE MENU
 ///////////////////////////////
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.288);
+	z-index: 100;
+}
+
 .mobile-menu {
 	display: none;
+	z-index: 500;
+
 	@include respond(phone) {
 		display: unset;
 	}
@@ -202,7 +217,7 @@ main {
 	background-color: $clr-neutral-3;
 
 	@include respond(tab-port) {
-		width: 95%;
+		width: 90%;
 	}
 }
 
