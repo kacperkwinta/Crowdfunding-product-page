@@ -98,6 +98,7 @@ html {
 body {
 	font-size: 1.6rem;
 	font-family: "Commissioner", sans-serif;
+	background-color: hsl(210, 17%, 98%);
 }
 
 ///////////////////////////////
@@ -211,9 +212,9 @@ main {
 .section {
 	padding: 4.8rem 3.2rem;
 	border-radius: 8px;
-	border: 1px solid $clr-neutral-4;
-	max-width: 90rem;
+	max-width: 70rem;
 	margin: 0 auto;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 	background-color: $clr-neutral-3;
 
 	&:not(:first-of-type) {
@@ -299,9 +300,10 @@ main {
 	}
 
 	.progress {
-		margin-top: 3.2rem;
 		grid-column: 1 / -1;
-		grid-row: 2 / 3;
+
+		width: 90%;
+		margin: 3.2rem auto 0 auto;
 		height: 1.2rem;
 		border-radius: 10rem;
 		background-color: $clr-neutral-4;
@@ -318,6 +320,62 @@ main {
 			grid-row: auto;
 			width: 100%;
 			margin-top: 0;
+		}
+	}
+}
+
+.section-about {
+}
+
+.product {
+	padding: 3.2rem 2.4rem;
+	border: 1px solid $clr-neutral-4;
+	border-radius: 8px;
+	margin-bottom: 3.2rem;
+
+	&:last-of-type {
+		opacity: 0.5;
+		margin-bottom: 0;
+	}
+
+	.wrapper {
+		@include flex(space-between, center);
+
+		@include respond(phone) {
+			flex-direction: column;
+			align-items: start;
+		}
+
+		&:first-of-type {
+			@include respond(phone) {
+				gap: 1.2rem;
+			}
+		}
+
+		&:last-of-type {
+			@include respond(phone) {
+				gap: 2.4rem;
+			}
+		}
+	}
+
+	.pledge {
+		color: $clr-primary-1;
+		font-weight: 500;
+	}
+
+	.amount {
+		font-weight: 700;
+		font-size: 3.2rem;
+
+		@include flex(center, center);
+		gap: 0.6rem;
+
+		&::after {
+			content: "left";
+			font-weight: 400;
+			color: $clr-neutral-2;
+			font-size: 1.6rem;
 		}
 	}
 }
@@ -374,6 +432,16 @@ main {
 
 	&:hover {
 		background-color: $clr-primary-2;
+	}
+}
+
+.btn--out-of-stock {
+	background-color: $clr-neutral-2;
+	color: $clr-neutral-3;
+	cursor: auto;
+
+	&:hover {
+		background-color: $clr-neutral-2;
 	}
 }
 
