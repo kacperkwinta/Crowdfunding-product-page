@@ -58,3 +58,13 @@ bookmark.addEventListener("click", function () {
 		bookmarkText.textContent = "Bookmark";
 	}
 });
+
+//////////////////////////////////////////////////////////////////////
+// For dialogs (modals)
+//////////////////////////////////////////////////////////////////////
+const iconCloseDialog = document.querySelector(".icon-close-dialog");
+const dialog = document.querySelector(".dialog--back-project");
+
+iconCloseDialog.addEventListener("click", function () {
+	dialog.classList.toggle("hidden");
+});

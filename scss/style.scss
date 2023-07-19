@@ -102,6 +102,96 @@ body {
 }
 
 ///////////////////////////////
+/// TYPOGRAPHY
+///////////////////////////////
+.heading-1 {
+	font-size: 3rem;
+}
+
+.heading-2 {
+	font-size: 2.4rem;
+}
+
+.heading-3 {
+	font-size: 2rem;
+}
+
+.heading-4 {
+	font-size: 1.8rem;
+}
+
+.paragraph {
+	line-height: 1.7;
+	color: $clr-neutral-2;
+}
+
+.btn {
+	display: inline-block;
+	padding: 1.8rem 3.6rem;
+	border-radius: 10rem;
+	border: none;
+	background-color: $clr-primary-1;
+	font-weight: 700;
+	color: $clr-neutral-3;
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	&:hover {
+		background-color: $clr-primary-2;
+	}
+}
+
+.btn--out-of-stock {
+	background-color: $clr-neutral-2;
+	color: $clr-neutral-3;
+	cursor: auto;
+
+	&:hover {
+		background-color: $clr-neutral-2;
+	}
+}
+
+.bookmark {
+	background-color: lighten($clr-neutral-4, 5);
+	color: $clr-neutral-2;
+	padding: 0;
+	transition: all 0.2s ease;
+
+	@include flex(center, center);
+	gap: 2.4rem;
+
+	&-text {
+		padding-right: 2.4rem;
+		font-weight: 700;
+	}
+
+	&:hover {
+		opacity: 0.75;
+		background-color: lighten($clr-neutral-4, 2);
+	}
+
+	@include respond(phone) {
+		span {
+			display: none;
+		}
+	}
+}
+
+.bookmark--active {
+	color: $clr-primary-2;
+
+	svg {
+		path {
+			fill: $clr-neutral-3;
+		}
+
+		circle {
+			fill: $clr-primary-2;
+		}
+	}
+}
+
+///////////////////////////////
 /// HEADER
 ///////////////////////////////
 header {
@@ -324,8 +414,8 @@ main {
 	}
 }
 
-.section-about {
-}
+// .section-about {
+// }
 
 .product {
 	padding: 3.2rem 2.4rem;
@@ -381,7 +471,7 @@ main {
 }
 
 ///////////////////////////////
-/// MODALS
+/// DIALOG (MODALS)
 ///////////////////////////////
 .modal-thanks {
 	margin: 2.4rem; /* TEMPORARY */
@@ -399,87 +489,81 @@ main {
 	border-radius: 8px;
 }
 
-///////////////////////////////
-/// TYPOGRAPHY
-///////////////////////////////
-.heading-1 {
-	font-size: 3rem;
-}
+.dialog--back-project {
+	position: relative;
+	// temp
+	margin-top: 4.8rem;
 
-.heading-2 {
-	font-size: 2.4rem;
-}
+	.icon-close-dialog {
+		position: absolute;
+		right: 3.2rem;
+		top: 3.2rem;
 
-.heading-3 {
-	font-size: 2rem;
-}
+		g {
+			fill: $clr-neutral-1;
+			opacity: 0.5;
+			transition: all 0.2s ease;
 
-.paragraph {
-	line-height: 1.7;
-	color: $clr-neutral-2;
-}
-
-.btn {
-	display: inline-block;
-	padding: 1.8rem 3.6rem;
-	border-radius: 10rem;
-	border: none;
-	background-color: $clr-primary-1;
-	font-weight: 700;
-	color: $clr-neutral-3;
-	cursor: pointer;
-	transition: all 0.2s ease;
-
-	&:hover {
-		background-color: $clr-primary-2;
-	}
-}
-
-.btn--out-of-stock {
-	background-color: $clr-neutral-2;
-	color: $clr-neutral-3;
-	cursor: auto;
-
-	&:hover {
-		background-color: $clr-neutral-2;
-	}
-}
-
-.bookmark {
-	background-color: lighten($clr-neutral-4, 2);
-	color: $clr-neutral-2;
-	padding: 0;
-	transition: all 0.2s ease;
-
-	@include flex(center, center);
-	gap: 3.2rem;
-
-	span {
-		padding-right: 3.2rem;
-	}
-
-	&:hover {
-		opacity: 0.75;
-		background-color: lighten($clr-neutral-4, 2);
-	}
-
-	@include respond(phone) {
-		span {
-			display: none;
+			&:hover {
+				opacity: 1;
+				cursor: pointer;
+			}
 		}
 	}
-}
 
-.bookmark--active {
-	color: $clr-primary-2;
+	.product {
+		display: grid;
+		grid-template-columns: 4.8rem 1fr;
+		transition: all 0.2s ease;
 
-	svg {
-		path {
-			fill: $clr-neutral-3;
+		& * {
+			transition: all 0.2s ease;
 		}
 
-		circle {
-			fill: $clr-primary-2;
+		&:hover {
+			cursor: pointer;
+
+			h3 {
+				color: $clr-primary-1;
+			}
+
+			.dot {
+				border: 1px solid $clr-primary-1;
+			}
 		}
+
+		.wrapper {
+			display: grid;
+			grid-template-columns: max-content max-content 1fr;
+		}
+	}
+
+	.dot {
+		height: 2.4rem;
+		width: 2.4rem;
+		border-radius: 10rem;
+		border: 1px solid $clr-neutral-4;
+
+		@include flex(center, center);
+
+		&-fill {
+			height: 1.2rem;
+			width: 1.2rem;
+			border-radius: 10rem;
+			background-color: $clr-primary-1;
+		}
+	}
+
+	.pledge {
+		margin-left: 1.6rem;
+	}
+
+	.amount {
+		font-size: 2rem;
+		justify-self: end;
+	}
+
+	.paragraph {
+		grid-column: 2 / 3;
 	}
 }
