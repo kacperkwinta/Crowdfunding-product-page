@@ -62,9 +62,60 @@ bookmark.addEventListener("click", function () {
 //////////////////////////////////////////////////////////////////////
 // For dialogs (modals)
 //////////////////////////////////////////////////////////////////////
-const iconCloseDialog = document.querySelector(".icon-close-dialog");
+const btnShowModal = document.querySelector(".btn--modal");
+const iconCloseModal = document.querySelector(".icon-close-dialog");
 const dialog = document.querySelector(".dialog--back-project");
 
-iconCloseDialog.addEventListener("click", function () {
-	dialog.classList.toggle("hidden");
+btnShowModal.addEventListener("click", function () {
+	dialog.showModal();
+});
+
+iconCloseModal.addEventListener("click", function () {
+	dialog.close();
+});
+
+dialog.addEventListener("click", (e) => {
+	const dialogDimensions = dialog.getBoundingClientRect();
+	if (
+		e.clientX < dialogDimensions.left ||
+		e.clientX > dialogDimensions.right ||
+		e.clientY < dialogDimensions.top ||
+		e.clientY > dialogDimensions.bottom
+	) {
+		dialog.close();
+	}
+});
+
+//////////////////////////////////////////////////////////////////////
+// For selected product
+//////////////////////////////////////////////////////////////////////
+const dots = document.querySelectorAll(".dot");
+const products = document.querySelectorAll(".product");
+
+// remove active class from all elements
+function removeActive() {
+	products.forEach((item) => {
+		item.classList.remove("product--active");
+	});
+
+	dots.forEach((dot) => {
+		dot.classList.remove("dot-fill");
+	});
+}
+
+// add active class to clicked product
+function addActive(e) {
+	removeActive();
+
+	const product = e.currentTarget;
+
+	if (product.classList.contains("product--unavailable")) return;
+	product.classList.add("product--active");
+
+	const dot = product.querySelector(".dot");
+	dot.classList.add("dot-fill");
+}
+
+products.forEach((item) => {
+	item.addEventListener("click", addActive);
 });

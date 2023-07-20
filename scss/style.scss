@@ -491,13 +491,19 @@ main {
 
 .dialog--back-project {
 	position: relative;
-	// temp
 	margin-top: 4.8rem;
+	border: none;
+	height: 85dvh;
+
+	&::backdrop {
+		background-color: hsla(0, 0%, 0%, 0.473);
+	}
 
 	.icon-close-dialog {
 		position: absolute;
 		right: 3.2rem;
 		top: 3.2rem;
+		transform: scale(1.6);
 
 		g {
 			fill: $clr-neutral-1;
@@ -534,7 +540,34 @@ main {
 
 		.wrapper {
 			display: grid;
-			grid-template-columns: max-content max-content 1fr;
+			gap: 1.2rem;
+			grid-template-columns: auto max-content 1fr;
+
+			@include respond(phone) {
+				row-gap: 1.2;
+				column-gap: 0;
+				grid-template-columns: 4.8rem 1fr;
+			}
+		}
+	}
+
+	.product--active {
+		border: 1px solid $clr-primary-1;
+	}
+
+	.product--unavailable {
+		user-select: none;
+
+		&:hover {
+			cursor: auto;
+
+			h3 {
+				color: unset;
+			}
+
+			.dot {
+				border: 1px solid $clr-neutral-3;
+			}
 		}
 	}
 
@@ -547,23 +580,39 @@ main {
 		@include flex(center, center);
 
 		&-fill {
-			height: 1.2rem;
-			width: 1.2rem;
-			border-radius: 10rem;
 			background-color: $clr-primary-1;
+		}
+	}
+
+	.heading-4 {
+		@include respond(phone) {
+			grid-column: 2/3;
 		}
 	}
 
 	.pledge {
 		margin-left: 1.6rem;
+
+		@include respond(phone) {
+			margin-left: 0;
+			grid-column: 2/3;
+		}
 	}
 
 	.amount {
 		font-size: 2rem;
 		justify-self: end;
+
+		@include respond(phone) {
+			grid-row: 4;
+		}
 	}
 
 	.paragraph {
 		grid-column: 2 / 3;
+
+		@include respond(phone) {
+			grid-column: 1 / -1;
+		}
 	}
 }
