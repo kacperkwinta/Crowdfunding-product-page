@@ -87,10 +87,11 @@ dialog.addEventListener("click", (e) => {
 });
 
 //////////////////////////////////////////////////////////////////////
-// For selected product
+// For selected back
 //////////////////////////////////////////////////////////////////////
 const dots = document.querySelectorAll(".dot");
 const products = document.querySelectorAll(".product");
+const donates = document.querySelectorAll(".donate");
 
 // remove active class from all elements
 function removeActive() {
@@ -100,6 +101,10 @@ function removeActive() {
 
 	dots.forEach((dot) => {
 		dot.classList.remove("dot-fill");
+	});
+
+	donates.forEach((donate) => {
+		donate.classList.add("hidden");
 	});
 }
 
@@ -114,8 +119,20 @@ function addActive(e) {
 
 	const dot = product.querySelector(".dot");
 	dot.classList.add("dot-fill");
+
+	const donate = product.querySelector(".donate");
+	donate.classList.remove("hidden");
 }
 
 products.forEach((item) => {
 	item.addEventListener("click", addActive);
 });
+
+//////////////////////////////////////////////////////////////////////
+// For inputs
+//////////////////////////////////////////////////////////////////////
+function limitInputToThreeDigits(input) {
+	if (input.value.length > 3) {
+		input.value = input.value.slice(0, 3); // Obcinamy wartość do trzech pierwszych cyfr
+	}
+}

@@ -51,7 +51,7 @@ $clr-neutral-4: hsl(0, 0%, 89%);
 /// UTILITY CLASSES
 ///////////////////////////////
 .hidden {
-	display: none;
+	display: none !important;
 }
 
 .visible {
@@ -493,7 +493,7 @@ main {
 	position: relative;
 	margin-top: 4.8rem;
 	border: none;
-	height: 85dvh;
+	height: 90dvh;
 
 	&::backdrop {
 		background-color: hsla(0, 0%, 0%, 0.473);
@@ -513,6 +513,21 @@ main {
 			&:hover {
 				opacity: 1;
 				cursor: pointer;
+			}
+		}
+	}
+
+	// first offer is free, so:
+
+	.product:first-of-type {
+		.input-donate,
+		.donate > p {
+			display: none;
+		}
+
+		.input-wrapper {
+			&::before {
+				content: "";
 			}
 		}
 	}
@@ -546,7 +561,7 @@ main {
 			@include respond(phone) {
 				row-gap: 1.2;
 				column-gap: 0;
-				grid-template-columns: 4.8rem 1fr;
+				grid-template-columns: max-content 1fr;
 			}
 		}
 	}
@@ -586,7 +601,6 @@ main {
 
 	.heading-4 {
 		@include respond(phone) {
-			grid-column: 2/3;
 		}
 	}
 
@@ -595,7 +609,7 @@ main {
 
 		@include respond(phone) {
 			margin-left: 0;
-			grid-column: 2/3;
+			grid-row: 2 / 3;
 		}
 	}
 
@@ -604,7 +618,8 @@ main {
 		justify-self: end;
 
 		@include respond(phone) {
-			grid-row: 4;
+			justify-self: start;
+			grid-row: 3 / 4;
 		}
 	}
 
@@ -612,7 +627,85 @@ main {
 		grid-column: 2 / 3;
 
 		@include respond(phone) {
-			grid-column: 1 / -1;
+			grid-column: 2 / -1;
+		}
+	}
+
+	.donate {
+		grid-column: 1 / -1;
+
+		margin-top: 2.4rem;
+		padding-top: 2.4rem;
+		border-top: 1px solid $clr-neutral-4;
+
+		display: grid;
+		gap: 1.2rem;
+		grid-template-columns: 1fr min-content min-content;
+		justify-items: center;
+		align-items: center;
+
+		p {
+			justify-self: start;
+			color: $clr-neutral-2;
+
+			@include respond(phone) {
+				justify-self: center;
+				margin-bottom: 2.4rem;
+			}
+		}
+
+		@include respond(phone) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.input-wrapper {
+		position: relative;
+
+		&::before {
+			content: "$";
+			position: absolute;
+			top: 1.8rem;
+			left: 2.4rem;
+			color: $clr-neutral-2;
+		}
+
+		@include respond(phone) {
+			width: 100%;
+		}
+	}
+
+	.input-donate {
+		background-color: $clr-neutral-3;
+		border: 1px solid $clr-neutral-4;
+		padding: 1.8rem 2.4rem;
+		color: $clr-neutral-1;
+		text-align: center;
+		width: 10rem;
+		transition: all 0.2s ease;
+
+		&:active,
+		&:hover {
+			border: 1px solid $clr-primary-1;
+		}
+	}
+
+	.input-donate {
+		/* Domyślnie ukrywamy spinner */
+		-moz-appearance: textfield;
+		appearance: textfield;
+	}
+
+	.input-donate::-webkit-inner-spin-button,
+	.input-donate::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	.btn {
+		@include respond(phone) {
+			width: 100%;
+			text-align: center;
 		}
 	}
 }
