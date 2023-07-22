@@ -160,5 +160,3 @@ function limitInputToThreeDigits(input) {
 		input.value = input.value.slice(0, 3);
 	}
 }
-
-modalThanks.showModal();
