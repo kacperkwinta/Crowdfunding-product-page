@@ -40,7 +40,6 @@ function hideMenu() {
 	navLinks.classList.remove("visible");
 	openMenuIcon.classList.remove("hidden");
 	closeMenuIcon.classList.add("hidden");
-	overlay.classList.add("hidden");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -60,11 +59,14 @@ bookmark.addEventListener("click", function () {
 });
 
 //////////////////////////////////////////////////////////////////////
-// For dialogs (modals)
+// For dialog
 //////////////////////////////////////////////////////////////////////
+
+// big dialog window with all support options
 const btnShowModal = document.querySelector(".btn--modal");
 const iconCloseModal = document.querySelector(".icon-close-dialog");
 const dialog = document.querySelector(".dialog--back-project");
+const btnsSelectReward = document.querySelectorAll(".btn--select-reward");
 
 btnShowModal.addEventListener("click", function () {
 	dialog.showModal();
@@ -85,6 +87,12 @@ dialog.addEventListener("click", (e) => {
 		dialog.close();
 	}
 });
+
+btnsSelectReward.forEach((btn) =>
+	btn.addEventListener("click", function () {
+		dialog.showModal();
+	})
+);
 
 //////////////////////////////////////////////////////////////////////
 // For selected back
@@ -128,11 +136,27 @@ products.forEach((item) => {
 	item.addEventListener("click", addActive);
 });
 
+// modal window after click continue in selected support option
+const modalThanks = document.querySelector(".modal-thanks");
+const buttonDonate = document.querySelectorAll(".btn--donate");
+const buttonGotIt = document.querySelector(".btn--got-it");
+
+buttonDonate.forEach((button) =>
+	button.addEventListener("click", function () {
+		dialog.close();
+		modalThanks.showModal();
+	})
+);
+
+buttonGotIt.addEventListener("click", function () {
+	modalThanks.close();
+});
+
 //////////////////////////////////////////////////////////////////////
 // For inputs
 //////////////////////////////////////////////////////////////////////
 function limitInputToThreeDigits(input) {
 	if (input.value.length > 3) {
-		input.value = input.value.slice(0, 3); // Obcinamy wartość do trzech pierwszych cyfr
+		input.value = input.value.slice(0, 3);
 	}
 }
