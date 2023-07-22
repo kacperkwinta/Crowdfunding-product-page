@@ -485,6 +485,10 @@ main {
 	&::backdrop {
 		background-color: hsla(0, 0%, 0%, 0.473);
 	}
+
+	@include respond(phone) {
+		width: 85%;
+	}
 }
 
 .modal-thanks *:not(:first-child) {
